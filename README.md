@@ -24,5 +24,5 @@ You can't wite code that is unrelated to the test.
 # Other Things to consider
 **Don't Repeat Yourself (DRY)**
 If you find yourself repeating code, can you optimise it? 
-**Siimplest passing code**
+**Simplest passing code**
 Remember, you want the simplest passing code. But you will refactor this. Eventually your tests should drive an algorithm, thus forcing you to implement real-life, business usecases. 
