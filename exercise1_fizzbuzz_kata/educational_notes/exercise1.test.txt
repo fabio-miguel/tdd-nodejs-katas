@@ -1,0 +1,28 @@
+const { randomNumbersContain } = require("./exercise1");
+
+describe("Exercise 1", () => {
+    // it("should work", () => {
+    //     expect(1).toBe(1);
+    // })
+    // it("should not work", () => {
+    //     expect(1).not.toBe(1);
+    // })
+    it("should return true if array contains the integer 10" , () => {
+        expect(randomNumbersContain(10)).toBe(true);
+        // expect(randomNumbersContain(10)).toBe(true);
+        // expect(randomNumbersContain(10)).toBe(true);
+        // expect(randomNumbersContain(10)).toBe(true);
+        // expect(randomNumbersContain(10)).toBe(true);
+        // expect(randomNumbersContain(10)).toBe(true);
+        // expect(randomNumbersContain(10)).toBe(true);
+        // expect(randomNumbersContain(10)).toBe(true);
+        // expect(randomNumbersContain(10)).toBe(true);
+        // expect(randomNumbersContain(10)).toBe(true);
+        // expect(randomNumbersContain(10)).toBe(true);
+        // expect(randomNumbersContain(10)).toBe(true);
+    })
+
+    // it("should return true if array contains the integer 11" , () => {
+    //     expect(randomNumbersContain(11)).not.toBe(true);
+    // })
+});

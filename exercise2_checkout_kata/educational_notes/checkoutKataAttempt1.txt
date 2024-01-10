@@ -1,0 +1,39 @@
+const ITEMS = require("./checkoutKataItems");
+const RULES = require("./checkoutKataRules");
+
+class Checkout {
+    constructor() {
+        this.total = 0;
+        this.scannedItems = new Map()
+    }
+    getTotal() {
+        return isNaN(this.total) ? 0 : this.total;
+    }
+    scan(item) {
+        if (ITEMS.has(item)) {
+    
+            const itemQty = (this.scannedItems.get(item) || 0) + 1;
+            this.scannedItems.set(item, itemQty);
+
+            const rule = RULES.get(item);
+            if (rule && itemQty % rule.quantity === 0) {
+                this.total += rule.discountedPrice - rule.discount * ITEMS.get(item);
+            } else {
+                this.total += ITEMS.get(item);
+            }
+        }
+        return this.total;
+    }
+}
+
+
+module.exports = { CheckoutAttempt1 };
+
+CRITIQUE: 
+// ⁠The acceptance criteria said items are scanned in the format "AAA", not that "A" is scanned three times. In an interview, the interviewer will bring this up because what you've implemented doesn't "meet the spec"
+
+// Nested ifs aren't scalable. Consider return early so you don't end up with a lot of nested, non-linear code: https://medium.com/swlh/return-early-pattern-3d18a41bba8
+
+// ⁠There's an ⁠ isNaN ⁠ check in the ⁠ getTotal ⁠ method, I wouldn't expect this, it leads me to think that something somewhere has been added incorrectly and this check is ensuring when that happens we return empty. We should explicitly handle whichever case results in NaN and handle it
+
+

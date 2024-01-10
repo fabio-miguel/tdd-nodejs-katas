@@ -1,0 +1,64 @@
+const { Checkout } = require("./checkoutKataAttempt1");
+
+describe("Checkout Kata", () => {
+    it("should return 0 when there is no item", () => {
+
+        const checkout = new Checkout();
+        const total = checkout.getTotal();
+        expect(total).toBe(0);
+    })
+    it("should apply regular pricing for a single item scanned", () => {
+
+        const checkout = new Checkout(); //given
+        checkout.scan("A"); //when
+        expect(checkout.getTotal()).toBe(50); //then
+    })
+    it("should do nothing when scanning an unknown item", () => {
+        
+        const checkout = new Checkout();
+        checkout.scan("X"); 
+        expect(checkout.getTotal()).toBe(0); 
+    });
+    it("should apply pricing rule for a single item", () => {
+
+        const checkout = new Checkout();
+        checkout.scan("A");
+        checkout.scan("A");
+        checkout.scan("A");
+        expect(checkout.getTotal()).toBe(130);
+    });
+    it("should apply pricing rule and regular pricing for a single item", () => {
+
+        const checkout = new Checkout();
+        checkout.scan("A");
+        checkout.scan("A");
+        checkout.scan("A");
+        checkout.scan("A");
+        expect(checkout.getTotal()).toBe(180);
+    })
+    it("should apply pricing rules for multiple items", () => {
+
+        const checkout = new Checkout();
+        checkout.scan("A");
+        checkout.scan("A");
+        checkout.scan("A");
+        checkout.scan("B");
+        checkout.scan("B");
+        expect(checkout.getTotal()).toBe(175);
+    })
+})
+
+
+// GIVEN a context WHEN something happens, THEN your result (given, when then)
+
+// Tests should drive a behaviour. So when you look at the tests a year from now and see "AAABB should return 130", and it starts to fail, you've no idea what's broken. If the test instead described the behaviour, like "should apply a discount when pricing rule applies", and that starts to fail, then you know what you've broken
+
+
+// Remember, A discount isn't applied when. for example, "AAABB" is scanned, it's applied when any item is scanned enough times that it qualifies for the pricing rule. In the future the pricing rules of AAABB may change
+
+
+// Most people who don't like TDD don't do it right, e.g. they write brittle tests which break whenever they change anything even though the result is the same (remember to do black-box testing to avoid this pitfall)
+
+// Remember that the input to your test should be the minimum possible to test what you want to test. E.g if you want to test a single pricing rule, just input "AAA" (if 3 is the minimum quantity) instead of like "AAABB"
+
+//Also remember the 3 steps of TDD: red, green, refactor. A lot of people forget the refactor part. Once you have the test coverage make sure you make the code nice and maintainable before you proceed

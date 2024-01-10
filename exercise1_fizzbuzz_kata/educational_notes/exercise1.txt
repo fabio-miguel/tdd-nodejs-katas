@@ -1,0 +1,18 @@
+const listOfNumbers = Array.from({length: 10000000}, () => Math.floor(Math.random() * 1000));
+listOfNumbers.splice(9999, 0, 10);
+const setOfNumbers = new Set(listOfNumbers);
+
+function randomNumbersContain(number) {
+    return setOfNumbers.has(number);
+}
+
+module.exports = { randomNumbersContain };
+
+
+// O(1) = constant, no matter how big the list is, this will always complete immediately
+// O(n) = linear, this function will grow relative to n, in this case, n is the size of the list
+// O(n^2) = quadratic
+// O(2^n) = exponential
+
+// black box testing
+

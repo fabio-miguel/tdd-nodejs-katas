@@ -1,0 +1,26 @@
+//-----------------------------------------------------------------------------
+
+function romanNumeralConverter(number) {
+    if (number >= 5) return "V" + romanNumeralConverter(number - 5);
+    // Recursive function:
+    // 1. Starts by checking if base case is met. If not then if statement loop executed
+    // 2. Recursive call to itself with the argument number - 1
+    // 3. So, next loop number is one less
+    // E.g. First, arguement is 3 & returns "I". Then, arg is 2 & concats another "I" etc
+    // 4. Eventually, base case of 0 is met & function moves on from if exection
+    if (number > 0) return "I" + romanNumeralConverter(number - 1);
+    
+    // Recursive Base Case 
+    return "";
+}
+
+//-----------------------------------------------------------------------------
+
+// NOTES:
+
+// Recursion: a recursive function is a function that calls itself during execution. 
+//There are typically two components:
+// 1. Base Case;  the condition under which the function stops calling itself & returns a value
+// 2. Recursive Case; this is where the function calls itself (repeatedly until the base case is reached)
+
+// As the above code began to build I could recognise an algorithm being formed. 
